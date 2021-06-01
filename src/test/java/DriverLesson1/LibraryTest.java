@@ -14,12 +14,12 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class LibraryTest {
 	@Test
 	public void launchDriver() {
-		// declaration and instantiation of objects/variables
-		//Step 1: Set driver's system property
+		
     	WebDriverManager.edgedriver().setup(); 
     	
     	//Step 2: Intialize driver
 		WebDriver driver = new EdgeDriver();
+		driver.manage().window().maximize();
 		
 		//Step 3: Give a URL
         String baseUrl = "http://google.com";
@@ -29,6 +29,7 @@ public class LibraryTest {
         // launch Chrome driver and direct it to the Base URL
         driver.get(baseUrl);
         driver.findElement(By.name("q")).sendKeys("Arijit Singh");
+        driver.findElement(By.xpath("(//input[@type=\"submit\" and @name=\"btnK\" and @value=\"Google Search\"])[2]")).click();
         // get the actual value of the title
         actualTitle = driver.getTitle();
         
